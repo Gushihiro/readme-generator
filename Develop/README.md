@@ -11,6 +11,7 @@ Readme generator prompts the user with a series of questions which are used to c
 * [License](#license)
 * [Contributors](#contributor)
 * [Tests](#tests)
+* [In Addition](#in-addition)
 * [Questions](#questions)
 ## Installation
 Users will need to install inquirer and fs to utilize the application. Installing inquirer requires opening the terminal and initializing npm (npm ini). Afterwards, type npm install inquirer to install inquirer. FS can be pulled into the .js via require().
@@ -22,6 +23,8 @@ The GNU GPL is the most widely used free software license and has a strong copyl
 Hiroto Robinson
 ## Tests
 Try all of the choices in the license, check the ToC, and decide for yourself.
+## In Addition
+${projectAdditional}
 ## Questions
 For any questions, refer to my [Github.](https://github.com/Gushihiro)
 Or send me an email at <robinsonhiroto@gmail.com>.

@@ -59,14 +59,20 @@ inquirer
       message: "What's your email address?",
       name: 'projectEmail',
     },
+    {
+      type: 'input',
+      message: "Any additional content you want to provide.",
+      name: 'projectAdditional',
+    },
   ])
   .then((response) => {
-    const projectName = response.projectName
-    const projectDescription = response.projectDescription
-    const projectInstall = response.projectInstall
-    const projectUse = response.projectUse
-    const projectLicense = response.projectLicense
+    const projectName = response.projectName;
+    const projectDescription = response.projectDescription;
+    const projectInstall = response.projectInstall;
+    const projectUse = response.projectUse;
+    const projectLicense = response.projectLicense;
     const projectTests = response.projectTests;
+    const projectAdditional = response.projectAdditional;
     let licenseIcon;
     let licenseDescription;
         switch (projectLicense) {
@@ -100,8 +106,9 @@ ${projectDescription}
 * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
-* [Contributors](#contributor)
+* [Contributors](#contributors)
 * [Tests](#tests)
+* [In Addition](#in-addition)
 * [Questions](#questions)
 ## Installation
 ${projectInstall}
@@ -113,6 +120,8 @@ ${licenseDescription}
 ${projectContribution}
 ## Tests
 ${projectTests}
+## In Addition
+${projectAdditional}
 ## Questions
 For any questions, refer to my [Github.](https://github.com/${projectGithub})
 Or send me an email at <${projectEmail}>.`
