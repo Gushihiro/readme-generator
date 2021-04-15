@@ -1,8 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer')
 const fs = require('fs')
-console.log(inquirer)
-console.log(fs)
 // TODO: Create an array of questions for user input
 inquirer
   .prompt([
@@ -31,7 +29,6 @@ inquirer
       message: 'Which license do you choose?',
       name: 'projectLicense',
       choices: [
-          'default',
           'BSD',
           'MIT',
           'GNU',
@@ -44,13 +41,23 @@ inquirer
     },
     {
       type: 'input',
-      message: 'Describe how to use your application.',
+      message: 'Describe what the purpose of the application is.',
       name: 'projectUse',
+    },
+    {
+      type: 'input',
+      message: 'Explain how to properly test the application.',
+      name: 'projectTests',
     },
     {
       type: 'input',
       message: "What's your github username?",
       name: 'projectGithub',
+    },
+    {
+      type: 'input',
+      message: "What's your email address?",
+      name: 'projectEmail',
     },
   ])
   .then((response) => {
@@ -59,28 +66,36 @@ inquirer
     const projectInstall = response.projectInstall
     const projectUse = response.projectUse
     const projectLicense = response.projectLicense
+    const projectTests = response.projectTests;
+    let licenseIcon;
+    let licenseDescription;
         switch (projectLicense) {
             case "BSD":
-                let licenseIcon = [![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)
+                licenseIcon = "[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)";
+                licenseDescription = "BSD 2-Clause “Simplified” License is a permissive license that comes in two variants, the BSD 2-Clause and BSD 3-Clause.";
                 break;
             case "MIT":
-                let licenseIcon = [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+                licenseIcon = "[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+                licenseDescription = "An MIT license is a short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code."
                 break;
             case "GNU":
-                let licenseIcon = [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+                licenseIcon = "[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)"
+                licenseDescription = "The GNU GPL is the most widely used free software license and has a strong copyleft requirement. When distributing derived works, the source code of the work must be made available under the same license. There are multiple variants of the GNU GPL, each with different requirements."
                 break;
             default:
-                let licenseIcon = [![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)
+                licenseIcon = "[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)"
         }
     const projectContribution = response.projectContribution
     const projectGithub = response.projectGithub
+    const projectEmail = response.projectEmail
     const generateReadme = 
     `
-# ${projectName} Readme <a name="readme"></a>
-## Description <a name="description"></a>
-        ${projectDescription}
+# ${projectName} Readme
+${licenseIcon}
+## Description
+${projectDescription}
 ## Table of Contents
-* [Top of Page](#readme)
+* [Top of Page](#${projectName}-readme)
 * [Description](#description)
 * [Installation](#installation)
 * [Usage](#usage)
@@ -88,18 +103,19 @@ inquirer
 * [Contributors](#contributor)
 * [Tests](#tests)
 * [Questions](#questions)
-## Installation <a name="installation"></a>
-        ${projectInstall}
-## Usage <a name="usage"></a>
-        ${projectUse}
-## License <a name="license"></a>
-        ${projectLicense}
-## Contributors <a name="contributor"></a>
-        ${projectContribution}
-## Tests <a name="tests"></a>
-    
-## Questions <a name="questions"></a>
-        For any questions, refer to my [Github.](https://github.com/${projectGithub})`
+## Installation
+${projectInstall}
+## Usage
+${projectUse}
+## License
+${licenseDescription}
+## Contributors
+${projectContribution}
+## Tests
+${projectTests}
+## Questions
+For any questions, refer to my [Github.](https://github.com/${projectGithub})
+Or send me an email at <${projectEmail}>.`
       console.log(response)
     fs.writeFile('README.md', generateReadme, (err) => {
         if (err) {
