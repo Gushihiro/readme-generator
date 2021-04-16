@@ -77,19 +77,19 @@ inquirer
     let licenseDescription;
         switch (projectLicense) {
             case "BSD":
-                licenseIcon = "[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)";
+                licenseIcon = "[![License: BSD](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)";
                 licenseDescription = "BSD 2-Clause “Simplified” License is a permissive license that comes in two variants, the BSD 2-Clause and BSD 3-Clause.";
                 break;
             case "MIT":
-                licenseIcon = "[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+                licenseIcon = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
                 licenseDescription = "An MIT license is a short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code."
                 break;
             case "GNU":
-                licenseIcon = "[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)"
+                licenseIcon = "[![License: GNU](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)"
                 licenseDescription = "The GNU GPL is the most widely used free software license and has a strong copyleft requirement. When distributing derived works, the source code of the work must be made available under the same license. There are multiple variants of the GNU GPL, each with different requirements."
                 break;
             default:
-                licenseIcon = "[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)"
+                licenseIcon = "[![License: BSD](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)"
         }
     const projectContribution = response.projectContribution
     const projectGithub = response.projectGithub
@@ -124,7 +124,7 @@ ${projectTests}
 ${projectAdditional}
 ## Questions
 For any questions, refer to my [Github.](https://github.com/${projectGithub})
-Or send me an email at <${projectEmail}>.`
+Or send me an email at <${projectEmail}>`
       console.log(response)
     fs.writeFile('README.md', generateReadme, (err) => {
         if (err) {
